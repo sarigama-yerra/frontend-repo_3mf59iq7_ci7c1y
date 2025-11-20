@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { apiGet } from '../lib/api'
+import ImageGallery from '../components/ImageGallery'
 
 export default function ProductDetail({ onAdd }){
   const { id } = useParams()
@@ -25,10 +26,7 @@ export default function ProductDetail({ onAdd }){
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid lg:grid-cols-2 gap-10">
         <div>
-          <div className="aspect-square bg-slate-900 rounded-2xl overflow-hidden">
-            <img src={p.images?.[0]} alt={p.title} className="w-full h-full object-cover" />
-          </div>
-          <p className="text-slate-400 text-sm mt-2">Tip: drag to rotate for 360° look (mock)</p>
+          <ImageGallery images={p.images || []} />
         </div>
         <div>
           <h1 className="text-3xl font-bold text-white">{p.title}</h1>
